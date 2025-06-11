@@ -1,4 +1,4 @@
-package com.teste.demo.DTO;
+package com.teste.crud.DTO;
 
 public class UsuarioDTO {
     public Long getId() {

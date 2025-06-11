@@ -1,6 +1,6 @@
-package com.teste.demo.repository;
+package com.teste.crud.repository;
 
-import com.teste.demo.model.UsuarioModel;
+import com.teste.crud.model.UsuarioModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

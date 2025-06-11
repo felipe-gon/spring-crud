@@ -1,4 +1,4 @@
-package com.teste.demo.model;
+package com.teste.crud.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;

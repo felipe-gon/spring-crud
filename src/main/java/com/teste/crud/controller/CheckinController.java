@@ -1,9 +1,9 @@
-package com.teste.demo.controller;
+package com.teste.crud.controller;
 
-import com.teste.demo.model.CheckinModel;
-import com.teste.demo.model.UsuarioModel;
-import com.teste.demo.repository.CheckinRepository;
-import com.teste.demo.repository.UsuarioRepository;
+import com.teste.crud.model.CheckinModel;
+import com.teste.crud.model.UsuarioModel;
+import com.teste.crud.repository.CheckinRepository;
+import com.teste.crud.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

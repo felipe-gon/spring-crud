@@ -1,4 +1,4 @@
-package com.teste.demo.model;
+package com.teste.crud.model;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;

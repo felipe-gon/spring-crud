@@ -1,13 +1,15 @@
-package com.teste.demo.controller;
+package com.teste.crud.controller;
 
-import com.teste.demo.DTO.UsuarioDTO;
-import com.teste.demo.DataFormatter;
-import com.teste.demo.model.UsuarioModel;
-import com.teste.demo.repository.UsuarioRepository;
+import com.teste.crud.DTO.UsuarioDTO;
+import com.teste.crud.DataFormatter;
+import com.teste.crud.model.UsuarioModel;
+import com.teste.crud.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/pessoas")
@@ -41,7 +43,7 @@ public class UsuarioController {
     public ResponseEntity<String> criaUsuario(@RequestBody UsuarioModel usuario) { //Cria o metodo POST que recebe o JSON de criação
 
         UsuarioModel usuarioSalvo = usuarioRepository.save(usuario); //Cria uma instancia do Model e recebe o metodo save do JPA para salvar usuario na tabela
-        System.out.println("Usuario " + usuario.getNome() + " criado em " + formatter.formatador);
+        System.out.println("Usuario " + usuario.getNome() + " criado em " + formatter.formatarData(LocalDateTime.now()));
         return ResponseEntity.status(HttpStatus.CREATED).body("Usuário " + usuario.getNome() + " criado com sucesso!"); //Retorna um 200 na requisição e retorna o usuario informado no POST
     }
 
