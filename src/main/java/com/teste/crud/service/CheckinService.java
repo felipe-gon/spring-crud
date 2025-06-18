@@ -4,10 +4,7 @@ import com.teste.crud.DataFormatter;
 import com.teste.crud.model.CheckinModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.xml.crypto.Data;
 import java.time.DayOfWeek;
-import java.time.LocalDateTime;
 
 @Service
 public class CheckinService {
@@ -15,9 +12,28 @@ public class CheckinService {
     @Autowired
     DataFormatter dataFormatter;
 
-    public void diariaSegundaSexta (CheckinModel checkin){ //Cria o metodo para setar o valor da diaria recebendo o checkin inteiro como parâmetro
 
+    public void diariaComGaragem (CheckinModel checkin){ //Cria o metodo para setar o valor da diaria recebendo o checkin como parâmetro
+        double valorDiaria;
+        double valorGaragem = 0;
+        double valorTotal;
+
+        DayOfWeek diaSemana = checkin.getDataEntrada().getDayOfWeek();
+        //Define que se a diária for em dia de semana (segunda a sexta), o valor será de R$120, e no final de semana R$150
+        if (diaSemana.getValue() >= DayOfWeek.MONDAY.getValue() && diaSemana.getValue() <= DayOfWeek.FRIDAY.getValue()) {
+            valorDiaria = 120;
+            if (checkin.isVeiculo())
+                valorGaragem = 15;
+        }
+        else {
+            valorDiaria = 150;
+            if (checkin.isVeiculo())
+                valorGaragem = 20;
+        }
+        valorTotal = valorGaragem + valorDiaria;
+
+        checkin.setValorDiaria(valorDiaria);
+        checkin.setValorGaragem(valorGaragem);
+        checkin.setValorTotal(valorTotal);
+        }
     }
-
-    
-}

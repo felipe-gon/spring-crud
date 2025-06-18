@@ -13,11 +13,13 @@ public class UsuarioModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nome;
 
     @OneToMany(mappedBy = "pessoa")     //Cria o vinculo com o atributo pessoa da classe UsuarioModel, 1 Usuario para N checkin
     private List<CheckinModel> checkins;
+
+    private String documento;
+    private String telefone;
 
     public void setNome(String nome) {
         this.nome = nome;
@@ -39,12 +41,10 @@ public class UsuarioModel {
         this.telefone = telefone;
     }
 
-    private String documento;
-    private String telefone;
-
     public UsuarioModel(String nome){
         this.nome = nome;
     }
+
     public String getNome() {
         return nome;
     }

@@ -22,6 +22,7 @@ public class CheckinModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    //Getters e Setters
     public LocalDateTime getDataEntrada() {
         return dataEntrada;
     }
@@ -54,6 +55,30 @@ public class CheckinModel {
         this.pessoa = pessoa;
     }
 
+    public double getValorDiaria() {
+        return valorDiaria;
+    }
+
+    public void setValorDiaria(double valorDiaria) {
+        this.valorDiaria = valorDiaria;
+    }
+
+    public double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public double getValorGaragem() {
+        return valorGaragem;
+    }
+
+    public void setValorGaragem(double valorGaragem) {
+        this.valorGaragem = valorGaragem;
+    }
+
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private UsuarioModel pessoa;    //Atributo que vai vincular meu checkin ao meu usuario na hora de fazer o POST checkin
@@ -63,5 +88,8 @@ public class CheckinModel {
     @JsonFormat(pattern = "dd-MM-yyyy'T'HH:mm:ss")
     LocalDateTime dataSaida;
     boolean veiculo;
+    double valorDiaria;
+    double valorTotal;
+    double valorGaragem;
 
 }
