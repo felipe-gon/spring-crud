@@ -5,6 +5,8 @@ import com.teste.crud.model.CheckinModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.DayOfWeek;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Service
 public class CheckinService {
@@ -19,6 +21,7 @@ public class CheckinService {
         double valorTotal;
 
         DayOfWeek diaSemana = checkin.getDataEntrada().getDayOfWeek();
+        LocalTime horarioSaida = checkin.getDataSaida().toLocalTime();
         //Define que se a diária for em dia de semana (segunda a sexta), o valor será de R$120, e no final de semana R$150
         if (diaSemana.getValue() >= DayOfWeek.MONDAY.getValue() && diaSemana.getValue() <= DayOfWeek.FRIDAY.getValue()) {
             valorDiaria = 120;
@@ -29,6 +32,10 @@ public class CheckinService {
             valorDiaria = 150;
             if (checkin.isVeiculo())
                 valorGaragem = 20;
+        }
+        if (horarioSaida.isAfter(LocalTime.of(16,30))){
+            valorDiaria = valorDiaria + 120;
+
         }
         valorTotal = valorGaragem + valorDiaria;
 

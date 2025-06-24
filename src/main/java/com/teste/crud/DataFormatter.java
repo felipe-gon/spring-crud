@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
@@ -20,5 +21,4 @@ public class DataFormatter {
         DayOfWeek dayOfWeek = data.getDayOfWeek();
         return dayOfWeek.getDisplayName(java.time.format.TextStyle.FULL, new Locale("pt", "BR")); //Para formatar o dia da semana em Português
     }
-
 }
