@@ -1,6 +1,6 @@
 package com.teste.crud.controller;
 
-import com.teste.crud.DTO.UsuarioDTO;
+import com.teste.crud.dto.UsuarioDTO;
 import com.teste.crud.DataFormatter;
 import com.teste.crud.model.UsuarioModel;
 import com.teste.crud.repository.UsuarioRepository;
