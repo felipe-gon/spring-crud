@@ -1,12 +1,10 @@
 HELP.md
-target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-mvnw
-mvnw.cmd
-.gitattributes
 /test
+/target/classes/com
+/target/classes/generated-sources
 
 ### STS ###
 .apt_generated
