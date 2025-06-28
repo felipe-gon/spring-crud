@@ -1,6 +1,6 @@
 package com.teste.crud.controller;
 
-import com.teste.crud.DTO.TotalGastoDTO;
+import com.teste.crud.dto.TotalGastoDTO;
 import com.teste.crud.model.CheckinModel;
 import com.teste.crud.model.UsuarioModel;
 import com.teste.crud.repository.CheckinRepository;
@@ -11,12 +11,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/checkin")
 public class CheckinController {
-
-    @Autowired
-    private TotalGastoDTO totalGastoDTO;
 
     @Autowired
     private CheckinRepository checkinRepository;
@@ -43,6 +42,12 @@ public class CheckinController {
     @GetMapping("/getTotalCost/{nome}")
     public ResponseEntity getTotalCost (@PathVariable String nome){
         UsuarioModel usuario = usuarioRepository.findByNome(nome);
-        return ResponseEntity.ok(totalGastoDTO.getValorTotalGasto());
+        List<CheckinModel> checkins = checkinRepository.findByPessoa(usuario);
+        double totalGasto = checkins.stream()
+                .mapToDouble(CheckinModel::getValorTotal)
+                .sum();
+
+        TotalGastoDTO totalGastoDTO = new TotalGastoDTO(totalGasto);
+        return ResponseEntity.ok("O valor total gasto até o momento é: R$ "+ totalGastoDTO.getValorTotal());
     }
 }
