@@ -6,6 +6,8 @@ HELP.md
 /target/classes/com
 /target/classes/generated-sources
 /target
+**.idea/
+.idea
 
 ### STS ###
 .apt_generated
@@ -34,3 +36,4 @@ build/
 
 ### VS Code ###
 .vscode/
+/.idea/
