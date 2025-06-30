@@ -67,14 +67,13 @@ public class CheckinModel {
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private UsuarioModel pessoa;    //Atributo que vai vincular meu checkin ao meu usuario na hora de fazer o POST checkin
-    @JsonFormat(pattern = "dd-MM-yyyy'T'HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     LocalDateTime dataEntrada;
-    @JsonFormat(pattern = "dd-MM-yyyy'T'HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     LocalDateTime dataSaida;
 
     boolean veiculo;
     double valorDiaria;
     double valorTotal;
     double valorGaragem;
-
 }
